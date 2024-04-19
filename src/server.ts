@@ -11,4 +11,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.listen(3000, () => console.log('server started on port 3000'));
+app.listen(4500, () => {
+  console.log('server started on port 4500');
+  console.log('environment is: ', process.env.NODE_ENV);
+});

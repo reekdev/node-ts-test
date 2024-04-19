@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rimraf node_modules",
     "re-install": "pnpm run clean && pnpm install",
-    "start:dev": "npx ts-node-dev --respawn --transpile-only src/server.ts"
+    "start:dev": "npx ts-node-dev --respawn --transpile-only src/server.ts",
+    "start:prod": "npx rimraf ./dist/ && npx tsc && NODE_ENV=production node ./dist/server.js"
   },
   "keywords": [
     "nodejs",
