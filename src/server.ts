@@ -8,6 +8,8 @@ app.get('/', (req, res) => {
   res.status(200).json({
     success: true,
     data: 'working',
+    ip1: req.ip,
+    ip2: req.socket.remoteAddress,
   });
 });
 
