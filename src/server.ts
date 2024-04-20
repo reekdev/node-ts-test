@@ -14,6 +14,16 @@ console.log(
   fs.existsSync(path.resolve(__dirname, '..', `.env.${process.env.NODE_ENV}`))
 );
 
+fs.readdir(path.resolve(__dirname, '..'), (err, files) => {
+  if (err) {
+    return console.log('Unable to scan directory: ' + err);
+  }
+  // Listing all files using forEach
+  files.forEach((file) => {
+    console.log(file);
+  });
+});
+
 const app = express();
 
 app.get('/', (req, res) => {
