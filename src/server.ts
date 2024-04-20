@@ -1,19 +1,9 @@
-import express from 'express';
+import path from 'path';
 
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+import dotenv from 'dotenv';
 
-app.get('/', (req, res) => {
-  res.status(200).json({
-    success: true,
-    data: 'working',
-    ip1: req.ip,
-    ip2: req.socket.remoteAddress,
-  });
+dotenv.config({
+  path: path.resolve(__dirname, '..', `.env.${process.env.NODE_ENV}`),
 });
 
-app.listen(4500, () => {
-  console.log('server started on port 4500');
-  console.log('environment is: ', process.env.NODE_ENV);
-});
+console.log('PORT is: ', process.env.PORT);
