@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 
 import dotenv from 'dotenv';
 
@@ -7,6 +8,11 @@ dotenv.config({
 });
 
 import express from 'express';
+
+console.log(
+  'env file exists: ',
+  fs.existsSync(path.resolve(__dirname, '..', `.env.${process.env.NODE_ENV}`))
+);
 
 const app = express();
 
