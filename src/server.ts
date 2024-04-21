@@ -1,28 +1,6 @@
-import path from 'path';
-import fs from 'fs';
-
-import dotenv from 'dotenv';
-
-dotenv.config({
-  path: path.resolve(__dirname, '..', `.env.${process.env.NODE_ENV}`),
-});
+import { env } from './config/checkEnvironmentVars';
 
 import express from 'express';
-
-console.log(
-  'env file exists: ',
-  fs.existsSync(path.resolve(__dirname, '..', `.env.${process.env.NODE_ENV}`))
-);
-
-fs.readdir(path.resolve(__dirname, '..'), (err, files) => {
-  if (err) {
-    return console.log('Unable to scan directory: ' + err);
-  }
-  // Listing all files using forEach
-  files.forEach((file) => {
-    console.log(file);
-  });
-});
 
 const app = express();
 
@@ -33,8 +11,8 @@ app.get('/', (req, res) => {
   });
 });
 
-console.log('PORT is: ', parseInt(process.env.PORT as string));
-console.log('current API version is: ', process.env.API_VERSION);
+console.log('PORT is: ', env.PORT);
+console.log('current API version is: ', env.API_VERSION);
 
 app.listen(process.env.PORT, () =>
   console.log(`server started on port: ${process.env.PORT}`)
