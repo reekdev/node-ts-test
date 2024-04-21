@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
   });
 });
 
-console.log('PORT is: ', process.env.PORT);
+console.log('PORT is: ', parseInt(process.env.PORT as string));
 console.log('current API version is: ', process.env.API_VERSION);
 
 app.listen(process.env.PORT, () =>
