@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server.ts",
   "scripts": {
-    "start:dev": "NODE_ENV=debe nodemon",
+    "start:dev": "NODE_ENV=development nodemon",
     "start:prod": "npx rimraf dist && npx tsc && NODE_ENV=production node dist/server.js",
     "build": "",
     "clean": "node ./scripts/async-delete-node-modules.mjs"

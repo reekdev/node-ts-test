@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
 });
 
 console.log('PORT is: ', process.env.PORT);
+console.log('current API version is: ', process.env.API_VERSION);
 
 app.listen(process.env.PORT, () =>
   console.log(`server started on port: ${process.env.PORT}`)
