@@ -11,9 +11,7 @@ app.get('/', (req, res) => {
   });
 });
 
-console.log('PORT is: ', env.PORT);
-console.log('current API version is: ', env.API_VERSION);
+console.log('PORT is:', env.PORT);
+console.log('current API version is:', env.API_VERSION);
 
-app.listen(process.env.PORT, () =>
-  console.log(`server started on port: ${process.env.PORT}`)
-);
+app.listen(env.PORT, () => console.log(`server started on port: ${env.PORT}`));

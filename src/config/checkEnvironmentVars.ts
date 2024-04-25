@@ -1,6 +1,8 @@
 import z from 'zod';
 import { loadEnvironmentVars } from './loadEnvironmentVars';
 
+loadEnvironmentVars();
+
 const envSchema = z.object({
   PORT: z
     .string()
@@ -15,8 +17,15 @@ const envSchema = z.object({
     .regex(/^api\/v\d+$/, 'API_VERSION must follow the format `api/v<number>`'),
 });
 
-(function checkEnvironmentVars() {
-  loadEnvironmentVars();
-})();
+let env: z.infer<typeof envSchema>;
 
-export const env = envSchema.parse(process.env);
+try {
+  env = envSchema.parse(process.env);
+} catch (error) {
+  if (error instanceof z.ZodError) {
+    console.error(error.issues);
+    process.exit(1);
+  }
+}
+
+export { env };

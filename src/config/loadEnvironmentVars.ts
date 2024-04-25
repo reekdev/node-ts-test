@@ -4,7 +4,7 @@ import path from 'path';
 type Environment = 'development' | 'testing' | 'production';
 
 export function loadEnvironmentVars() {
-  console.log('Trying to validate the environment type');
+  console.log('\n\nTrying to validate the environment type');
   const envType = process.env.NODE_ENV as any;
 
   if (envType === undefined) {
@@ -27,10 +27,8 @@ export function loadEnvironmentVars() {
     }
 
     const validatedEnvironmentType = envType as Environment;
-    console.log('Validated');
-    console.log('Environment type is: ', validatedEnvironmentType);
-
-    console.log(path.resolve());
+    console.log('\x1b[32mValidated\x1b[0m');
+    console.log('Environment type is:', validatedEnvironmentType);
     const fileName = `.env.${validatedEnvironmentType}`;
     const absolutePathOfFileToLookFor = path.resolve(fileName);
     const envFileExists = fs.existsSync(absolutePathOfFileToLookFor);
@@ -40,9 +38,9 @@ export function loadEnvironmentVars() {
       try {
         const file = fs.readFileSync(absolutePathOfFileToLookFor, 'utf-8');
         if (file.trim().length === 0) {
-          console.log(`${fileName} is empty`);
+          console.log(`\x1b[31m${fileName} is empty\x1b[0m`);
+          process.exit(1);
         } else {
-          console.log(file);
           file.split('\n').forEach((line) => {
             if (line.trim().length !== 0) {
               const parts = line.trim().split('=');
@@ -51,8 +49,9 @@ export function loadEnvironmentVars() {
                 process.env[key.trim()] = value.trim();
               } else {
                 console.error(
-                  `Invalid line in ${fileName}\n-----\n${line}\n-----`
+                  `\x1b[31mInvalid line in ${fileName}\x1b[0m\n-----\n${line}\n-----`
                 );
+                process.exit(1);
               }
             }
           });
