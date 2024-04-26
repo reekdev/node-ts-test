@@ -1,5 +1,6 @@
 import path from 'path';
-import fs from 'fs/promises';
+// import fs from 'fs/promises';
+import fs from 'node:fs/promises'
 
 (async function () {
   const folderToDelete = path.resolve('node_modules');
