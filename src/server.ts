@@ -1,7 +1,9 @@
+import 'module-alias/register';
+
 import { env } from './config/checkEnvironmentVars';
 
 import express from 'express';
-import asyncHandler from './error/async-handler';
+import asyncErrorHandler from './error/async-error-handler';
 import globalErrorHandler from './error/error.middleware';
 import AuthRouter from './routes/auth.route';
 
@@ -13,13 +15,13 @@ app.use(express.urlencoded({ extended: true }));
 app.get(`/${env.API_VERSION}/healthcheck`, (req, res) => {
   res.status(200).json({
     success: true,
-    data: `Working as of ${Date.now()}`,
+    data: `Working as of ${Date.now()}`
   });
 });
 
 app.get(
   '/invalid-route',
-  asyncHandler(async (req, res, next) => {
+  asyncErrorHandler(async (req, res, next) => {
     throw new Error('this is not a valid route');
   })
 );
@@ -31,7 +33,7 @@ app.use(globalErrorHandler);
 app.use('*', (req, res) => {
   res.status(404).json({
     status: 'fail',
-    data: `could not find ${req.baseUrl}`,
+    data: `could not find ${req.baseUrl}`
   });
 });
 

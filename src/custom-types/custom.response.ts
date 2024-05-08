@@ -14,4 +14,6 @@ type ErrorResponse = {
   data?: any;
 };
 
-export type CustomResponse = SuccessResponse | FailedResponse | ErrorResponse;
+type CustomResponse = SuccessResponse | FailedResponse | ErrorResponse;
+
+export { CustomResponse };
