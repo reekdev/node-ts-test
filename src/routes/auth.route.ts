@@ -7,7 +7,7 @@ const AuthRouter = Router();
 
 AuthRouter.post(
   '/signup',
-  // validate(signupSchema),
+  validate(signupSchema),
   signup
 
   // (req, res) => {
