@@ -14,7 +14,7 @@ export function loadEnvironmentVars() {
     const validEnvironments: Environment[] = [
       'development',
       'testing',
-      'production',
+      'production'
     ];
 
     if (!validEnvironments.includes(envType)) {

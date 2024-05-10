@@ -1,5 +1,4 @@
 import 'module-alias/register';
-
 import { env } from './config/checkEnvironmentVars';
 
 import express from 'express';
@@ -17,6 +16,15 @@ app.get(`/${env.API_VERSION}/healthcheck`, (req, res) => {
     success: true,
     data: `Working as of ${Date.now()}`
   });
+});
+
+app.get('/heavy-task-api', (req, res) => {
+  let total = 0;
+  for (let i = 0; i < 50_000_000_00; ++i) {
+    total += i;
+  }
+
+  res.send(`total is ${total}`);
 });
 
 app.get(
@@ -40,6 +48,6 @@ app.use('*', (req, res) => {
 app.listen(env.PORT, () => {
   console.group('[INFO]');
   console.log(
-    `server started on port: ${env.PORT} with api version: ${env.API_VERSION}`
+    `server started on port: ${env.PORT} with api version: ${env.API_VERSION}\nProcess ID: ${process.pid}`
   );
 });

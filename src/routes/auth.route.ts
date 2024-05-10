@@ -5,7 +5,17 @@ import { Router } from 'express';
 
 const AuthRouter = Router();
 
-AuthRouter.post('/signup', validate(signupSchema), signup);
+AuthRouter.post(
+  '/signup',
+  // validate(signupSchema),
+  signup
+
+  // (req, res) => {
+  //   res.status(404).json({
+  //     status: 'asd'
+  //   });
+  // }
+);
 AuthRouter.post(
   '/login',
   (req, res, next) => {},

@@ -16,7 +16,7 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   if (err instanceof ZodError) {
     res.status(400).json({
       status: 'error',
-      errors: err.issues,
+      errors: err.issues
     });
   }
 };
