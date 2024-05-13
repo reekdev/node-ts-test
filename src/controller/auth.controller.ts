@@ -1,14 +1,19 @@
-import { SignupDTO } from '@dto/auth/signup.dto';
-import { Request } from 'express';
+import { StandardResponse } from '@custom-types/custom.response';
+import { SignupRequest } from '@custom-types/request/auth/signup.request';
 import asyncErrorHandler from '@error/async-error-handler';
 
-const signup = asyncErrorHandler(async (req: SignupDTO, res, next) => {
-  console.log(1);
+const UserController = {
+  signup: asyncErrorHandler(
+    async (req: SignupRequest, res: StandardResponse, next) => {
+      // console.log(req.query.gender);
+      console.log(Object.hasOwn(req.query, 'gender'));
 
-  // res.status(201).json({
-  //   status: 'fail',
-  //   data: 'user created'
-  // });
-});
+      res.status(201).json({
+        status: 'success',
+        data: 'user create85858d'
+      });
+    }
+  )
+};
 
-export { signup };
+export default UserController;

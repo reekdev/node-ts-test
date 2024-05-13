@@ -1,3 +1,5 @@
+import { Response } from 'express';
+
 type SuccessResponse = {
   status: 'success';
   data: any;
@@ -14,6 +16,6 @@ type ErrorResponse = {
   data?: any;
 };
 
-type CustomResponse = SuccessResponse | FailedResponse | ErrorResponse;
+type ResponseBody = SuccessResponse | FailedResponse | ErrorResponse;
 
-export { CustomResponse };
+export type StandardResponse = Response<ResponseBody>;

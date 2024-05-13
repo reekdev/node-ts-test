@@ -1,5 +1,12 @@
+import type { NextFunction, Request, Response } from 'express';
 import { AnyZodObject } from 'zod';
-import { Request, Response, NextFunction } from 'express';
+
+/**
+ * This is a higher order function that returns another function
+ * specifically, an Express middleware with the signature (req: Request, res: Response, next: NextFunction)
+ *
+ * This returned function is what actually gets executed when a request hits the route
+ */
 
 const validate = (schema: AnyZodObject) => {
   return (req: Request, res: Response, next: NextFunction) => {
@@ -12,4 +19,4 @@ const validate = (schema: AnyZodObject) => {
   };
 };
 
-export default validate;
+export { validate };

@@ -46,7 +46,7 @@ export function loadEnvironmentVars() {
               const parts = line.trim().split('=');
               if (parts.length === 2) {
                 const [key, value] = parts;
-                process.env[key.trim()] = value.trim();
+                if (key && value) process.env[key.trim()] = value.trim();
               } else {
                 console.error(
                   `\x1b[31mInvalid line in ${fileName}\x1b[0m\n-----\n${line}\n-----`

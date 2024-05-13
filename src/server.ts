@@ -1,10 +1,11 @@
-import 'module-alias/register';
-import { env } from './config/checkEnvironmentVars';
+// require('module-alias/register');
+// import 'module-alias/register';
 
 import express from 'express';
-import asyncErrorHandler from './error/async-error-handler';
-import globalErrorHandler from './error/error.middleware';
-import AuthRouter from './routes/auth.route';
+import { env } from '@config/checkEnvironmentVars';
+import asyncErrorHandler from '@error/async-error-handler';
+import AuthRouter from '@routes/auth.route';
+import globalErrorHandler from '@error/error.middleware';
 
 const app = express();
 

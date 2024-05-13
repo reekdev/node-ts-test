@@ -5,10 +5,11 @@
   "main": "src/server.ts",
   "scripts": {
     "start:dev": "NODE_ENV=development nodemon",
-    "start:prod": "npx rimraf dist && npx tsc && NODE_ENV=production node dist/server.js",
+    "start:prod": "npx rimraf dist && npx tsc && NODE_ENV=production node -r module-alias/register.js dist/server.js",
     "build": "",
     "clean": "node ./scripts/async-delete-node-modules.mjs"
   },
+  "type": "module",
   "keywords": [
     "nodejs",
     "express",
