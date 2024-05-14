@@ -12,7 +12,7 @@ type FailedResponse = {
 
 type ErrorResponse = {
   status: 'error';
-  errors: any[];
+  errors: Array<Record<string, any>>;
   data?: any;
 };
 

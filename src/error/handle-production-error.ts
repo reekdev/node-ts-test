@@ -1,5 +1,5 @@
-import { StandardResponse } from '@custom-types/custom.response';
 import { ZodError } from 'zod';
+import { StandardResponse } from '../custom-types/custom.response';
 
 const handleProductionError = (error: any, res: StandardResponse) => {
   if (error instanceof ZodError) {

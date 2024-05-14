@@ -1,8 +1,8 @@
-import { StandardResponse } from '@custom-types/custom.response';
 import { ErrorRequestHandler } from 'express';
 import { ZodError } from 'zod';
 import { handleDevelopmentError } from './handle-development-error';
 import { handleProductionError } from './handle-production-error';
+import { StandardResponse } from '../custom-types/custom.response';
 
 const globalErrorHandler: ErrorRequestHandler = (
   err,
@@ -18,18 +18,6 @@ const globalErrorHandler: ErrorRequestHandler = (
       handleProductionError(err, res);
       break;
   }
-
-  // if (err instanceof ZodError) {
-  //   res.status(400).json({
-  //     status: 'error',
-  //     errors: err.issues.map((e) => {
-  //       return {
-  //         errorCode: 'ZODERROR',
-  //         ...e
-  //       };
-  //     })
-  //   });
-  // }
 };
 
 export default globalErrorHandler;

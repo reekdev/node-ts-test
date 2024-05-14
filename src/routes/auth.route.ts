@@ -1,7 +1,7 @@
-import UserController from '@controller/auth.controller';
-import { validate } from '@middleware/validate.resource';
-import signupSchema from '@schema/auth/signup.schema';
 import { Router } from 'express';
+import { validate } from '../middleware/validate.resource';
+import signupSchema from '../schema/auth/signup.schema';
+import UserController from '../controller/auth.controller';
 
 const AuthRouter = Router();
 
