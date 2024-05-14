@@ -1,8 +1,7 @@
 import { ErrorRequestHandler } from 'express';
-import { ZodError } from 'zod';
+import { StandardResponse } from '../custom-types/custom.response';
 import { handleDevelopmentError } from './handle-development-error';
 import { handleProductionError } from './handle-production-error';
-import { StandardResponse } from '../custom-types/custom.response';
 
 const globalErrorHandler: ErrorRequestHandler = (
   err,

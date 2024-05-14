@@ -1,4 +1,5 @@
-import { Response } from 'express';
+import type { Response } from 'express';
+import { ErrorCode } from '../error/error-codes.enum';
 
 type SuccessResponse = {
   status: 'success';
@@ -10,10 +11,15 @@ type FailedResponse = {
   data: any;
 };
 
+type ErrorContent = {
+  message: string;
+  context?: Record<string, any>;
+};
+
 type ErrorResponse = {
   status: 'error';
-  errors: Array<Record<string, any>>;
-  data?: any;
+  code: ErrorCode;
+  errors: ErrorContent[];
 };
 
 type ResponseBody = SuccessResponse | FailedResponse | ErrorResponse;
