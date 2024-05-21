@@ -22,8 +22,8 @@ const handleDevelopmentError = (error: any, res: StandardResponse) => {
       code: ErrorCode.GENERIC_ERROR,
       errors: [
         {
-          message: 'something went wrong',
-          context: error
+          message: error.message || 'Something went wrong',
+          context: error.stack
         }
       ]
     });

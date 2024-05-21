@@ -13,7 +13,7 @@ type FailedResponse = {
 
 type ErrorContent = {
   message: string;
-  context?: Record<string, any>;
+  context?: Record<string, any> | string;
 };
 
 type ErrorResponse = {
